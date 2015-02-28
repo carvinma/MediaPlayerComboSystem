@@ -1,0 +1,65 @@
+BODY 
+{ 
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FONT-SIZE: 12px;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	LINE-HEIGHT: 1.5;
+	PADDING-TOP: 0px;
+	FONT-FAMILY: Arial,Helvetica,sans-serif;
+	HEIGHT: 100%;
+	TEXT-ALIGN: left
+} 
+
+TABLE 
+{ 
+font-size:100%; 
+} 
+
+A 
+{ 
+color:#336699; 
+text-decoration:none; 
+} 
+
+A:hover 
+{ 
+text-decoration:underline; 
+color:#003366; 
+} 
+A:visited
+{ 
+color:#336699; 
+text-decoration:none; 
+} 
+
+DIV IMG 
+{ 
+MARGIN-BOTTOM: 0px; 
+MARGIN-RIGHT: 5px; 
+MARGIN-TOP: -3px; 
+VERTICAL-ALIGN: middle 
+} 
+
+DIV A:hover 
+{ 
+FONT-WEIGHT: normal; 
+MARGIN-RIGHT: 5px; 
+VERTICAL-ALIGN: middle 
+} 
+DIV A 
+{ 
+FONT-WEIGHT: normal; 
+MARGIN-RIGHT: 5px; 
+VERTICAL-ALIGN: middle 
+} 
+
+.Navigator 
+{ 
+color: #003366; 
+} 
+.Navigator-Hidden 
+{ 
+display:none; 
+} 

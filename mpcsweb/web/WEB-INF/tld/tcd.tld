@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+	
+	<tag>
+       <name>menu</name>
+       <tag-class>com.tcd.web.tag.MenuTag</tag-class>
+       <body-content>JSP</body-content>
+       <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute>
+            <name>role</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+       </attribute>
+    </tag>
+    
+	<tag>
+       <name>callMenu</name>
+       <tag-class>com.tcd.web.tag.CallMenuTag</tag-class>
+       <body-content>JSP</body-content>
+       <attribute>
+            <name>code</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+       </attribute>
+    </tag>
+	
+	<tag>
+       <name>menu</name>
+       <tag-class>com.tcd.user.tag.MenuTag</tag-class>
+       <body-content>JSP</body-content>
+       <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+       </attribute>
+    </tag>
+    <tag>
+       <name>out</name>
+       <tag-class>com.tcd.web.tag.Key2NameTag</tag-class>
+       <body-content>empty</body-content>
+       <attribute>
+           <name>type</name>
+           <required>true</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute>
+           <name>keyValue</name>
+           <required>false</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>       
+       <attribute>
+           <name>keyName</name>
+           <required>false</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute>
+           <name>name</name>
+           <required>false</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute>
+           <name>code</name>
+           <required>false</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute> 
+           <name>keyType</name>
+           <required>false</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+    </tag>
+    
+    <tag>
+       <name>item</name>
+       <tag-class>com.tcd.task.tag.ItemNameTag</tag-class>
+       <body-content>empty</body-content>
+       <attribute>
+           <name>towerNo</name>
+           <required>true</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+       <attribute>
+           <name>type</name>
+           <required>true</required>
+           <rtexprvalue>true</rtexprvalue>
+       </attribute>
+    </tag>
+    
+    
+    <function>    
+        <name>dataValueFn</name>   
+        <function-class>com.tcd.datainfo.fn.DataInfoFn</function-class>    
+        <function-signature>   
+            java.lang.String getValueByCode(java.lang.String)   
+        </function-signature>   
+    </function>
+    <function>    
+        <name>dataNameFn</name>   
+        <function-class>com.tcd.datainfo.fn.DataInfoFn</function-class>    
+        <function-signature>   
+            java.lang.String getNameByCode(java.lang.String)   
+        </function-signature>   
+    </function>
+    <function>    
+        <name>dataListFn</name>   
+        <function-class>com.tcd.datainfo.fn.DataInfoFn</function-class>    
+        <function-signature>   
+            java.util.List listByParentCode(java.lang.String)   
+        </function-signature>   
+    </function>
+    <function>    
+        <name>getNameByParentCodeOrValue</name>   
+        <function-class>com.tcd.datainfo.fn.DataInfoFn</function-class>    
+        <function-signature>   
+            java.lang.String getNameByParentCodeOrValue(java.lang.String,java.lang.String)   
+        </function-signature>   
+    </function>
+    <function>    
+        <name>formatTime</name>   
+        <function-class>com.tcd.common.util.StringUtils</function-class>    
+        <function-signature>   
+            java.lang.String showTime(java.lang.Integer)   
+        </function-signature>   
+    </function>
+    
+    <function>    
+        <name>substr</name>   
+        <function-class>com.tcd.common.util.ChineseUtils</function-class>    
+        <function-signature>   
+            java.lang.String substr(java.lang.String,java.lang.Integer)   
+        </function-signature>   
+    </function>
+   <function>
+		<name>betweenAnd</name>
+		<function-class>com.tcd.common.util.StringUtils</function-class>
+		<function-signature>
+			boolean betweenAnd(java.lang.String,java.lang.String,java.lang.String)
+		</function-signature>
+	</function>
+	 
+</taglib>

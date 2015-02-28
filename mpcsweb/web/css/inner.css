@@ -1,0 +1,102 @@
+@charset "utf-8";
+/*-------------------布局层--------------------------*/
+.r1,.r2{width:1094px; margin:0 auto;}
+.r1c1{margin-top:9px;}
+.r1c2{margin-top:23px;}
+.r1c2,.r1c2 a{color:#fff;}
+.r1c2 a{text-decoration:underline;}
+.r2c1{width:106px; margin-top:4px;}
+.r2c2{width:985px;}
+.r2c2r1c1{width:684px;}
+.r2c2r1c2{width:281px;}
+.r2c2r1c2 h2,.r2c2r1c2 th,.r2c2r1c2 td{text-align:center;}
+/*-------------------公共样式--------------------------*/
+table,th,td,tr { border:1px #ccc solid; border-collapse:collapse; vertical-align:middle;}
+table{width:100%;}
+td{ padding:5px;}
+thead th{background:url(../img/th.png) repeat-x; line-height:30px; color:#000; font-weight:bold; font-size:14px; padding:0 5px;text-align: center;}
+thead th a{color:#000; text-decoration:none; font-weight:bold;}
+tbody th{ background:#f8f8f8; text-align:center;}
+table a{color:#378BD1; text-decoration:underline;}
+table .del-a{color:#FC0000; margin-left:10px;}
+.table1 tr{border:none; background:#fff}
+.table1 td{border-top:none; border-bottom:none;}
+.button{background:url(../img/button.gif) no-repeat; padding-bottom:2px; height:31px; width:110px; font-size:16px; color:#fff; margin:0 5px;}
+button.big{background:url(../img/button.png) no-repeat; width:150px;}
+/*-------------------头部--------------------------*/
+#header{height:79px; background:url(../img/header.jpg) repeat-x;}
+/*-------------------尾部--------------------------*/
+#footer{text-align:center; color:#797979; margin-top:10px;}
+/*-------------------导航--------------------------*/
+#nav{position:fixed;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop)+80);}
+#nav-h{background:url(../img/nav-h.png) no-repeat; height:34px; line-height:34px; font-size:16px; text-align:center; color:#fff;}
+#nav .bd{border:1px solid #ccc; border-top:none; padding:4px 9px; border-radius:0 0 5px 5px}
+#nav li a{display:inline-block; width:84px; height:73px; border:1px solid #fff; text-align:center; font-weight:bold;}
+#nav li a:hover{border:1px solid #C9C9C9; border-radius:5px;}
+#nav span{background:url(../img/nav.gif) no-repeat; display:block; height:48px; margin:3px 0 2px; cursor:pointer;}
+#nav #nav1{ background-position:center 0;}
+#nav #nav2{ background-position:center -48px;}
+#nav #nav3{ background-position:center -96px;}
+#nav #nav4{ background-position:center -144px;}
+#nav #nav5{ background-position:center -192px;}
+#nav #nav6{ background-position:center -240px;}
+#nav li{position:relative;}
+#nav .menu{position:absolute; right:-162px; top:0; z-index:2; background:url(../img/nav-ul.png) no-repeat right bottom; padding-bottom:33px; display:none;}
+#nav .menu ul{background:url(../img/nav-ul.png) no-repeat left top; padding:33px 21px 0 25px; width:132px;}
+#nav li li{ margin:6px 0;}
+#nav li li a{width:132px; height:34px; line-height:34px; border:none;}
+#nav li li a:hover{border:none; background:url(../img/nav-hover.png) no-repeat; color:#fff; border-radius:0;}
+/*-------------------面包屑--------------------------*/
+#breadcrumbs{background:url(../img/breadcrumbs.png) no-repeat; line-height:31px; padding-left:10px}
+/*-------------------主内容--------------------------*/
+#main{border:1px solid #ccc; border-radius:5px; margin-top:5px; padding:6px 7px;}
+#main h2{font-size:14px; margin:5px;}
+#main .tr{padding:10px; 0;}
+/*-------------------次导航--------------------------*/
+#subnav{ margin:24px 0 75px 40px;}
+#subnav li{float:left; display:inline; width:93px; margin:0 40px; text-align:center; font-size:14px;}
+#subnav span{background:url(../img/subnav.gif) no-repeat; display:block; height:93px; cursor:pointer;}
+#subnav #subnav1{ background-position:center 0;}
+#subnav #subnav2{ background-position:center -93px;}
+#subnav #subnav3{ background-position:center -186px;}
+#subnav #subnav4{ background-position:center -279px;}
+#subnav #subnav5{ background-position:center -372px;}
+/*-------------------运输方案列表--------------------------*/
+#ysfalb{margin-top:22px;}
+/*-------------------运输方案--------------------------*/
+#ysfa textarea{width:713px; height:64px; background:#f8f8f8; border:none;}
+/*-------------------编辑运输方案--------------------------*/
+#bjysfz textarea{width:190px; height:62px;}
+/*-------------------运输任务导航--------------------------*/
+#ysrw-nav{margin-bottom:10px;}
+#ysrw-nav li{float:left; display:inline; margin-right:4px; position:relative;}
+#ysrw-nav a{display:block; width:105px; height:31px; line-height:29px; text-align:center; background:url(../img/ysrw-nav.gif) no-repeat center;}
+#ysrw-nav .current{background:url(../img/ysrw-nav-current.png) no-repeat center;}
+#ysrw-nav li ul{border:1px solid #D6D6D6; border-radius:5px; width:132px; position:absolute; background:#fff; background:rgba(255,255,255,.9); display:none; padding:10px 0; box-shadow:0 0 10px rgba(0,0,0,.3)}
+#ysrw-nav li li{float:none; display:block; margin-bottom:7px;}
+#ysrw-nav li li a{ background:none; width:132px; height:31px; line-height:31px; overflow:hidden; text-align:left; text-indent:24px;}
+#ysrw-nav li li a:hover{background:url(../img/nav-hover.png) no-repeat; color:#fff;}
+#ysrw-nav i{background:url(../img/ysrw-nav-i.png) no-repeat center; display:inline-block; width:9px; height:5px;}
+#ysrw-nav .arrow{background:url(../img/ysrw-nav-li.png) no-repeat right center; padding-right:30px;}
+/*-------------------波形图--------------------------*/
+#bxt table{ margin:0 5px 7px 0; width:335px; _overflow:hidden;}
+#bxt th{text-align:center;}
+/*-------------------地图监控--------------------------*/
+#dtjk th{color:#27531F;}
+#ysrw-nav .c1{font-size:14px; color:#066DC4; line-height:29px;}
+#ysrw-nav .c2{line-height:29px; font-size:14px; color:#221714; _width:461px;}
+/*-------------------弹出层--------------------------*/
+.overlay{position:absolute; width:100%; height:100%; z-index:999; left:0; top:0; background:rgba(0,0,0,.5);filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#80000000, endColorstr=#80000000);}
+.dialog{ margin:0 auto;}
+.dialog .hd{height:32px; line-height:32px; color:#fff; font-size:14px; padding-left:10px; position:relative;}
+.dialog .bd{ padding:10px;}
+.dialog .tc{padding-top:20px;}
+.dialog table,.dialog th{text-align:center;}
+.close{width:16px; height:16px; background:url(../img/close.gif) no-repeat; position:absolute; right:7px; top:7px; cursor:pointer}
+.dialog1{ width:760px; height:359px; margin-top:119px;background:url(../img/dialog-bg1.png) no-repeat;}
+.dialog2{background:url(../img/dialog-bg2.png) no-repeat; width:352px; height:146px; margin-top:241px;}
+.dialog2 .bd{padding-left:57px; padding-top:22px;}
+.dialog2 p{ height:60px; line-height:60px; font-size:18px; color:#393939;}
+#dialog-success p{background:url(../img/success.gif) no-repeat; padding-left:107px;}
+#dialog-error p{background:url(../img/error.gif) no-repeat; padding-left:85px;}
+#dialog-add .bd{height:240px; overflow-y:scroll; width:730px; _width:710px;}

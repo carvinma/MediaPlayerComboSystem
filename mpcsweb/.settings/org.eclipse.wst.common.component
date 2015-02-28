@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="wpweb">
+        <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/applog"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/audit"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/cad"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/cadtool"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/check"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/common"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/company"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/datainfo"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/defect"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/equip"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/gis"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/jmlevle"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/location"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/media"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/pad"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/qm"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/repair"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/rush"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/statistics"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/substation"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/task"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/user"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/video"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/xianchang"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/xm"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/pms"/>
+        <property name="context-root" value="wpweb"/>
+        <property name="java-output-path" value="/wpweb/build/classes"/>
+    </wb-module>
+</project-modules>

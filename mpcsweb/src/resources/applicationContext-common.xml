@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-lazy-init="true">
+
+	<description>Spring公共配置 </description>
+	<!-- 基础服务 -->
+	<bean id="baseClientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.sggis.service.baseservicedefinitions.BaseServicePortType" />
+		<property name="address" value="${gis.base.url}" />
+	</bean>
+	<bean id="baseClient"
+		class="com.sggis.service.baseservicedefinitions.BaseServicePortType"
+		factory-bean="baseClientFactory" factory-method="create" />
+	<bean id="gisBaseService" class="com.sggis.service.GISBaseService">
+		<property name="client" ref="baseClient" />
+		<property name="username" value="${gis.username}" />
+		<property name="password" value="${gis.password}" />
+	</bean>
+
+	<!-- 图形浏览服务 -->
+	<bean id="mapClientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.sggis.service.mapservice.MapServicePortType" />
+		<property name="address" value="${gis.map.url}" />
+	</bean>
+	<bean id="mapClient" class="com.sggis.service.mapservice.MapServicePortType"
+		factory-bean="mapClientFactory" factory-method="create" />
+	<bean id="gisMapService" class="com.sggis.service.GISMapService">
+		<property name="client" ref="mapClient" />
+	</bean>
+
+	<!-- 查询定位服务 -->
+	<bean id="queryClientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.sggis.service.queryservice.QueryServicePortType" />
+		<property name="address" value="${gis.query.url}" />
+	</bean>
+	<bean id="queryClient" class="com.sggis.service.queryservice.QueryServicePortType"
+		factory-bean="queryClientFactory" factory-method="create" />
+	<bean id="gisQueryService" class="com.sggis.service.GISQueryService">
+		<property name="client" ref="queryClient" />
+	</bean>
+
+	<!-- 切片地图服务 -->
+	<bean id="tileClientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass"
+			value="com.sggis.service.tilemapservice.TileMapServicePortType" />
+		<property name="address" value="${gis.tile.url}" />
+	</bean>
+	<bean id="tileClient" class="com.sggis.service.tilemapservice.TileMapServicePortType"
+		factory-bean="tileClientFactory" factory-method="create" />
+	<bean id="gisTileMapService" class="com.sggis.service.GISTileMapService">
+		<property name="client" ref="tileClient" />
+	</bean>
+
+	<!-- 普通的业务Bean -->
+	<bean name="synchronousDataJob" class="com.tcd.common.job.SynchronousDataJob" />
+	<!-- 作业 -->
+	<bean id="synchronousDataJob_Detail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synchronousDataJob" />
+		<property name="targetMethod" value="run" />
+	</bean>
+	<!-- 触发器 -->
+	<bean id="synchronousDataJob_Trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="synchronousDataJob_Detail" />
+		<property name="cronExpression">
+			<!--<value>0 0 0 1 * ? *</value> --><!-- 每月1号凌晨0点0时0点开始 -->
+			<value>0 0 0 * * ? </value><!-- 每天0点触发 -->
+		</property>
+	</bean>
+	 
+	<bean name="jobStartQuartz" lazy-init="false"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				 <ref bean="synchronousDataJob_Trigger" />
+			</list>
+		</property>
+	</bean>   
+</beans>

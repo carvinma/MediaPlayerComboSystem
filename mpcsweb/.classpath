@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/applog"/>
+	<classpathentry kind="src" path="src/audit"/>
+	<classpathentry kind="src" path="src/cad"/>
+	<classpathentry kind="src" path="src/cadtool"/>
+	<classpathentry kind="src" path="src/check"/>
+	<classpathentry kind="src" path="src/common"/>
+	<classpathentry kind="src" path="src/company"/>
+	<classpathentry kind="src" path="src/datainfo"/>
+	<classpathentry kind="src" path="src/defect"/>
+	<classpathentry kind="src" path="src/equip"/>
+	<classpathentry kind="src" path="src/gis"/>
+	<classpathentry kind="src" path="src/jmlevle"/>
+	<classpathentry kind="src" path="src/location"/>
+	<classpathentry kind="src" path="src/media"/>
+	<classpathentry kind="src" path="src/pad"/>
+	<classpathentry kind="src" path="src/qm"/>
+	<classpathentry kind="src" path="src/repair"/>
+	<classpathentry kind="src" path="src/resources"/>
+	<classpathentry kind="src" path="src/rush"/>
+	<classpathentry kind="src" path="src/statistics"/>
+	<classpathentry kind="src" path="src/substation"/>
+	<classpathentry kind="src" path="src/task"/>
+	<classpathentry kind="src" path="src/user"/>
+	<classpathentry kind="src" path="src/video"/>
+	<classpathentry kind="src" path="src/xianchang"/>
+	<classpathentry kind="src" path="src/xm"/>
+	<classpathentry kind="src" path="src/pms"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_45">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
