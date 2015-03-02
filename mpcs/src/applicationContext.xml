@@ -55,6 +55,9 @@
 				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
 			</props>
 		</property>
+		<property name="packagesToScan">
+			<value>com.hysd.domain</value>
+		</property>
 	</bean>
 	<!-- 配置Hibernate的数据源代理工厂：方法二，使用list集合，按文件名搜索匹配的映射文件 -->
 	<!-- 

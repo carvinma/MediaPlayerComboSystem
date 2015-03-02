@@ -3,17 +3,20 @@ package com.hysd.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 雇员
- */
-public class Emp implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+// 表示为实体类
+@Table(name = "Emp")
+// 表名注解
+public class Emp extends BaseDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer empno; // 雇员编号
 	private String ename; // 雇员姓名
 	private String job; // 工作
-	 
 
 	public Emp() {
 	}
@@ -46,9 +49,6 @@ public class Emp implements Serializable {
 	public void setJob(String job) {
 		this.job = job;
 	}
-
-	 
-  
 
 	@Override
 	public String toString() {
