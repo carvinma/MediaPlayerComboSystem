@@ -1,59 +1,63 @@
 package com.hysd.action;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
-import org.apache.struts2.ServletActionContext;
+import javax.annotation.Resource;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
-import com.hysd.domain.Emp;
-import com.hysd.service.EmpService;
-import com.opensymphony.xwork2.ActionSupport;
+import com.hysd.domain.User;
+import com.hysd.domain.UserSession;
+import com.hysd.service.UserService;
 
 @Controller
-public class LoginAction extends ActionSupport {
+public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
-
+	private static Logger log = Logger.getLogger(LoginAction.class);
 	@Resource
-	private EmpService empService;
+	private UserService userService;
 
-	private String empname;
+	private String loginname;
 	private String password;
 
 	public String login() {
-
-		System.out.println("提交的请求参数如下：");
-		System.out.println("empname：" + empname);
-		System.out.println("password：" + password);
-
-		int eid = 0;
-		try {
-			eid = Integer.parseInt(empname);
-		} catch (Exception ex) {
+		log.debug("START: LoginAction-login()");
+		if (StringUtils.isEmpty(loginname) || StringUtils.isEmpty(password)) {
+			this.addActionError("请输入用户名和密码!");
+			log.debug("END  : LoginAction-login()--请输入用户名和密码");
+			return ERROR;
+		}
+		User user = userService.findByUserName(loginname);// 为了测试结果，这里写死了
+		if (user == null || !user.getPassword().equals(password)) {
+			this.addActionError("用户名或密码错误!");
+			log.debug("END  : LoginAction-login()--用户名或密码错误");
+			return ERROR;
 		}
 
-		Emp emp = empService.findEmpById(eid);// 为了测试结果，这里写死了
-		if (emp != null) {
-			System.out.println("根据主键ID查询记录：查到了，查询成功！");
-			System.out.println(emp.toString());
-
-			HttpServletRequest request = ServletActionContext.getRequest();// 在Struts2的Action中获取Servlet的原生API
-			request.setAttribute("empname", emp.getEname());
-			return SUCCESS;
-		} else {
-			System.out.println("根据主键ID查询记录：没查到，查询失败，记录不存在！");
-			return "failure";
-		}
+		// 加入session
+		UserSession uSession = new UserSession();
+		uSession.setUser(user);
+		setUserSession(uSession);
+		uSession.setNow((new Date()).getTime() + "");
+		// 设置session里的内容
+		setUserSession(uSession);
+		// 4.设置Cookie
+		// setCookie(uSession);
+		getSession().put("USERSESSION", uSession);
+		log.debug("END  : LoginAction-login()");
+		return SUCCESS;
 
 	}
 
-	public String getEmpname() {
-		return empname;
+	public String getLoginname() {
+		return loginname;
 	}
 
-	public void setEmpname(String empname) {
-		this.empname = empname;
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
 	}
 
 	public String getPassword() {

@@ -15,5 +15,6 @@ public interface EmpService {
 	public void deleteEmp(Emp emp);
 
 	public List<Emp> findAllList();
+	
 
 }

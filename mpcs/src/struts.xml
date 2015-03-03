@@ -19,35 +19,43 @@
 	<constant name="struts.objectFactory" value="spring" />
 	<!-- Struts2处理的请求后缀,默认值是action -->
 	<constant name="struts.action.extension" value="do" />
-	
-	<!-- 国际化资源文件
-	<constant name="struts.custom.i18n.resources" value="globalMessages" />
-	 -->
 
-	
-	<package name="hysd" extends="struts-default">
-	
-		<default-action-ref name="indexPage" />
-		
+	<!-- 国际化资源文件 <constant name="struts.custom.i18n.resources" value="globalMessages" 
+		/> -->
+
+	<package name="mpcs-default" extends="struts-default,json-default"
+		abstract="true">
+		<default-action-ref name="login" />
 		<global-results>
-			<result name="exceptionPage">/error/exceptionPage.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="error">/error.jsp</result>
 		</global-results>
-		
-		<global-exception-mappings>
-			<exception-mapping result="exceptionPage" exception="java.lang.Exception" />
-		</global-exception-mappings>
-		
+		<action name="login">
+			<result>/login.jsp</result>
+		</action>
 		<action name="indexPage">
 			<result>/login.jsp</result>
 		</action>
-		
+	</package>
+	<package name="mpcs" extends="mpcs-default">
 		<action name="login" method="login" class="com.hysd.action.LoginAction">
 			<result name="success">/success.jsp</result>
 			<result name="failure">/failure.jsp</result>
 			<result name="error">/login.jsp</result>
 		</action>
 
+		<action name="user_*" method="{1}" class="com.hysd.action.UserAction">
+			<result name="{1}" type="json" />
+			<result name="input" type="json" />
+		</action>
 	</package>
+	
+	<package name="mpcsclient" extends="json-default">
+		<action name="client"  class="com.hysd.action.ClientManagerAction">
+			<result name="json" type="json" />
+		</action>
+	</package>
+
 
 </struts>
 
