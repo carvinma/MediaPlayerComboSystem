@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 	<form action="${pageContext.request.contextPath}/login.do" method="post">
-		username：<input type="text" name="empname" /> <br /> 
+		username：<input type="text" name="loginname" /> <br /> 
 		password：<input type="password" name="password" /> <br /> 
 		<input type="submit" value="login" />
 		<input type="reset" value="reset" />

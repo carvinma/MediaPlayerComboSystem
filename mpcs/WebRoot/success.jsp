@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 
-	欢迎您：${request['empname']}
+	欢迎您：${sessionScope.USERSESSION.user.userName }
 	
 </body>
 </html>
