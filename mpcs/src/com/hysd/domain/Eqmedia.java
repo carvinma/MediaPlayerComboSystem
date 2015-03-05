@@ -1,7 +1,7 @@
 package com.hysd.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -21,7 +21,7 @@ public class Eqmedia extends BaseDomain implements Serializable {
 	private Long mediaId;
 	private Integer canDownLoad;
 	private Integer canPlay;
-	private Timestamp updateTime;
+	private Date updateTime;
 
 	public Long getEqId() {
 		return this.eqId;
@@ -55,11 +55,11 @@ public class Eqmedia extends BaseDomain implements Serializable {
 		this.canPlay = canPlay;
 	}
 
-	public Timestamp getUpdateTime() {
+	public Date getUpdateTime() {
 		return this.updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

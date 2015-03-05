@@ -83,6 +83,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 				q.setParameter(i, param[i]);
 			}
 		}
+		 
 		return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
 	}
 

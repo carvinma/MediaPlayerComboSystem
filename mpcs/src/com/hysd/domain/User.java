@@ -1,7 +1,7 @@
 package com.hysd.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,8 +15,8 @@ public class User extends BaseDomain implements Serializable {
 	private String password;
 	private Long roleId;
 	private Long adminId;
-	private Timestamp createTime;
-	private Timestamp updateTime;
+	private Date createTime;
+	private Date updateTime;
 	private Integer isAdmin;
 	private Integer isDelete;
 
@@ -52,19 +52,19 @@ public class User extends BaseDomain implements Serializable {
 		this.adminId = adminId;
 	}
 
-	public Timestamp getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public Timestamp getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

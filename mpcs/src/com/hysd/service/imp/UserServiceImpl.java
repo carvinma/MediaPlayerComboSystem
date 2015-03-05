@@ -61,8 +61,9 @@ public class UserServiceImpl implements UserService {
 		if (params.size() > 0) {
 			whereHql.append(" where ");
 
-			if (params.get("username") != null) {
-				whereHql.append(" username like '%?%'");
+			if (params.get("userName") != null) {
+				whereHql.append(" userName like '%?%'");
+				paramlist.add(params.get("userName"));
 			}
 
 		}
@@ -72,10 +73,25 @@ public class UserServiceImpl implements UserService {
 		long count = dao.count(counthql, paramlist);
 		page.setTotalRow(count);
 		// 获取当前页的数据
+		whereHql.append(" order by id desc");
 		String listhql = " from User " + whereHql.toString();
-
 		page.setDataList(dao.find(listhql, paramlist));
 		return page;
+	}
+
+	@Override
+	public boolean hasCode(String userName, Long id) {
+		String hql = "select count(id) from User where userName=?";
+		List<Object> list = new ArrayList<Object>();
+		list.add(userName);
+		if (id != null && id != 0) {
+			hql = hql + " and id != ?";
+			list.add(id);
+		}
+		long count = dao.count(hql, list);
+		if (count == 0)
+			return false;
+		return true;
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.hysd.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +19,7 @@ public class Version extends BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private boolean category;
 	private String url;
-	private Timestamp updateTime;
+	private Date updateTime;
 	private String version;
 
 	public boolean category() {
@@ -38,11 +38,11 @@ public class Version extends BaseDomain implements Serializable {
 		this.url = url;
 	}
 
-	public Timestamp getUpdateTime() {
+	public Date getUpdateTime() {
 		return this.updateTime;
 	}
 
-	public void setUpdateTime(Timestamp updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

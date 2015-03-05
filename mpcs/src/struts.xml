@@ -48,6 +48,10 @@
 			<result name="{1}" type="json" />
 			<result name="input" type="json" />
 		</action>
+		<action name="media_*" method="{1}" class="com.hysd.action.MediaAction">
+			<result name="{1}" type="json" />
+			<result name="input" type="json" />
+		</action>
 	</package>
 	
 	<package name="mpcsclient" extends="json-default">

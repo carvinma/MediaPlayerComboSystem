@@ -18,4 +18,6 @@ public interface UserService {
 	Page<User> list(Page<User> page, Map<String, Object> map);
 
 	public User findByUserName(String username);
+	/**判断是否已存在用户名*/
+	public boolean hasCode(String userName, Long id);
 }

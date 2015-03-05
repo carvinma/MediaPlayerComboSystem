@@ -23,6 +23,22 @@ public class LoginAction extends BaseAction {
 	private String loginname;
 	private String password;
 
+	public String getLoginname() {
+		return loginname;
+	}
+
+	public void setLoginname(String loginname) {
+		this.loginname = loginname;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String login() {
 		log.debug("START: LoginAction-login()");
 		if (StringUtils.isEmpty(loginname) || StringUtils.isEmpty(password)) {
@@ -30,7 +46,7 @@ public class LoginAction extends BaseAction {
 			log.debug("END  : LoginAction-login()--请输入用户名和密码");
 			return ERROR;
 		}
-		User user = userService.findByUserName(loginname);// 为了测试结果，这里写死了
+		User user = userService.findByUserName(loginname);
 		if (user == null || !user.getPassword().equals(password)) {
 			this.addActionError("用户名或密码错误!");
 			log.debug("END  : LoginAction-login()--用户名或密码错误");
@@ -50,22 +66,6 @@ public class LoginAction extends BaseAction {
 		log.debug("END  : LoginAction-login()");
 		return SUCCESS;
 
-	}
-
-	public String getLoginname() {
-		return loginname;
-	}
-
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }

@@ -21,8 +21,8 @@ public class Client extends BaseDomain implements Serializable {
 	private String ip;
 	private String deviceHardwareVersion;
 	private String deviceFirmwareVersion;
-	private String updateTime;
-	private String activeTime;
+	private Date updateTime;
+	private Date activeTime;
 	private String uploadByte;
 	private String downloadByte;
 	private String SIM1_SSID;
@@ -61,19 +61,19 @@ public class Client extends BaseDomain implements Serializable {
 		this.deviceFirmwareVersion = deviceFirmwareVersion;
 	}
 
-	public String getUpdateTime() {
+	public Date getUpdateTime() {
 		return this.updateTime;
 	}
 
-	public void setUpdateTime(String updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public String getActiveTime() {
+	public Date getActiveTime() {
 		return this.activeTime;
 	}
 
-	public void setActiveTime(String activeTime) {
+	public void setActiveTime(Date activeTime) {
 		this.activeTime = activeTime;
 	}
 

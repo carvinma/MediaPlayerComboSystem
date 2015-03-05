@@ -1,7 +1,6 @@
 package com.hysd.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -21,8 +20,8 @@ public class ClientPO extends BaseDomain implements Serializable {
 	private String ip;
 	private String deviceHardwareVersion;
 	private String deviceFirmwareVersion;
-	private Date updateTime;
-	private Date activeTime;
+	private String updateTime;
+	private String activeTime;
 	private Long uploadByte;
 	private Long downloadByte;
 	private String SIM1_SSID;
@@ -61,19 +60,19 @@ public class ClientPO extends BaseDomain implements Serializable {
 		this.deviceFirmwareVersion = deviceFirmwareVersion;
 	}
 
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return this.updateTime;
 	}
 
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public Date getActiveTime() {
+	public String getActiveTime() {
 		return this.activeTime;
 	}
 
-	public void setActiveTime(Date activeTime) {
+	public void setActiveTime(String activeTime) {
 		this.activeTime = activeTime;
 	}
 

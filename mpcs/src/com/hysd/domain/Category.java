@@ -1,6 +1,7 @@
 package com.hysd.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,20 +16,46 @@ import javax.persistence.Table;
 @Table(name = "tbcategory")
 public class Category extends BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	private Long superId;
+	private String categoryCode;
 	private String categoryName;
+	private String categoryValue;
 	private Integer isDelete;
 
+	public Long getSuperId() {
+		return superId;
+	}
+
+	public void setSuperId(Long superId) {
+		this.superId = superId;
+	}
+
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+
 	public String getCategoryName() {
-		return this.categoryName;
+		return categoryName;
 	}
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
 
+	public String getCategoryValue() {
+		return categoryValue;
+	}
+
+	public void setCategoryValue(String categoryValue) {
+		this.categoryValue = categoryValue;
+	}
+
 	public Integer getIsDelete() {
-		return this.isDelete;
+		return isDelete;
 	}
 
 	public void setIsDelete(Integer isDelete) {

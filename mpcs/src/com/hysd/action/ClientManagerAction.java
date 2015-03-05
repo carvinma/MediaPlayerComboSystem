@@ -10,7 +10,7 @@ public class ClientManagerAction extends ActionSupport {
 	private static Logger logger = Logger.getLogger(ClientManagerAction.class);
 	private static final long serialVersionUID = 1L;
 	private String message;
-	private String data;
+	private String data; 
 
 	public String execute() throws Exception {
 		logger.debug("ClientManager-receiveContent=" + data);
@@ -18,7 +18,7 @@ public class ClientManagerAction extends ActionSupport {
 		ObjectMapper mapper = new ObjectMapper();
 		ParamPO paramPO = mapper.readValue(data, ParamPO.class);
 		// TODO 处理信息
-
+		
 		message = "ok";
 		return "json";
 	}
