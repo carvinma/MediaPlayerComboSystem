@@ -1,9 +1,5 @@
 package com.hysd.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * 此类由MySQLToBean工具自动生成
@@ -12,18 +8,15 @@ import javax.persistence.Table;
  * @since 2015-03-03 19:05:57
  */
 
-@Entity
-@Table(name = "tbclient")
-public class ClientPO extends BaseDomain implements Serializable {
-	private static final long serialVersionUID = 1L;
-	 
+public class ClientPO {
+	private Long id;
 	private String ip;
 	private String deviceHardwareVersion;
 	private String deviceFirmwareVersion;
 	private String updateTime;
 	private String activeTime;
-	private Long uploadByte;
-	private Long downloadByte;
+	private String uploadByte;
+	private String downloadByte;
 	private String SIM1_SSID;
 	private String SIM1_MAC;
 	private String SIM1_ICCID;
@@ -34,7 +27,15 @@ public class ClientPO extends BaseDomain implements Serializable {
 	private String SIM2_ICCID;
 	private String SIM2_SIM_IMSI;
 	private String SIM2_SIM_SerialNo;
-	private Long RunTime;
+	private String RunTime;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getIp() {
 		return this.ip;
@@ -76,19 +77,19 @@ public class ClientPO extends BaseDomain implements Serializable {
 		this.activeTime = activeTime;
 	}
 
-	public Long getUploadByte() {
+	public String getUploadByte() {
 		return this.uploadByte;
 	}
 
-	public void setUploadByte(Long uploadByte) {
+	public void setUploadByte(String uploadByte) {
 		this.uploadByte = uploadByte;
 	}
 
-	public Long getDownloadByte() {
+	public String getDownloadByte() {
 		return this.downloadByte;
 	}
 
-	public void setDownloadByte(Long downloadByte) {
+	public void setDownloadByte(String downloadByte) {
 		this.downloadByte = downloadByte;
 	}
 
@@ -172,11 +173,11 @@ public class ClientPO extends BaseDomain implements Serializable {
 		this.SIM2_SIM_SerialNo = SIM2_SIM_SerialNo;
 	}
 
-	public Long getRunTime() {
+	public String getRunTime() {
 		return this.RunTime;
 	}
 
-	public void setRunTime(Long RunTime) {
+	public void setRunTime(String RunTime) {
 		this.RunTime = RunTime;
 	}
 

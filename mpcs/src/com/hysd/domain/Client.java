@@ -17,14 +17,14 @@ import javax.persistence.Table;
 @Table(name = "tbclient")
 public class Client extends BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
-	 
+
 	private String ip;
 	private String deviceHardwareVersion;
 	private String deviceFirmwareVersion;
 	private Date updateTime;
 	private Date activeTime;
-	private String uploadByte;
-	private String downloadByte;
+	private Long uploadByte;
+	private Long downloadByte;
 	private String SIM1_SSID;
 	private String SIM1_MAC;
 	private String SIM1_ICCID;
@@ -35,7 +35,7 @@ public class Client extends BaseDomain implements Serializable {
 	private String SIM2_ICCID;
 	private String SIM2_SIM_IMSI;
 	private String SIM2_SIM_SerialNo;
-	private String RunTime;
+	private Long RunTime;
 
 	public String getIp() {
 		return this.ip;
@@ -77,19 +77,19 @@ public class Client extends BaseDomain implements Serializable {
 		this.activeTime = activeTime;
 	}
 
-	public String getUploadByte() {
+	public Long getUploadByte() {
 		return this.uploadByte;
 	}
 
-	public void setUploadByte(String uploadByte) {
+	public void setUploadByte(Long uploadByte) {
 		this.uploadByte = uploadByte;
 	}
 
-	public String getDownloadByte() {
+	public Long getDownloadByte() {
 		return this.downloadByte;
 	}
 
-	public void setDownloadByte(String downloadByte) {
+	public void setDownloadByte(Long downloadByte) {
 		this.downloadByte = downloadByte;
 	}
 
@@ -173,12 +173,11 @@ public class Client extends BaseDomain implements Serializable {
 		this.SIM2_SIM_SerialNo = SIM2_SIM_SerialNo;
 	}
 
-	public String getRunTime() {
+	public Long getRunTime() {
 		return this.RunTime;
 	}
 
-	public void setRunTime(String RunTime) {
+	public void setRunTime(Long RunTime) {
 		this.RunTime = RunTime;
 	}
-
 }

@@ -1,13 +1,20 @@
 package com.hysd.domain;
 
-
 public class EqinfoPO {
-
+	private Long id;
 	private String sn;
 	private String area;
 	private String categoryId;
 	private String stateId;
 	private String clientId;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getSn() {
 		return this.sn;

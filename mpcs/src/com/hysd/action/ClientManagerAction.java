@@ -1,38 +1,43 @@
 package com.hysd.action;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.hysd.domain.ParamPO;
+import com.hysd.domain.ResultPO;
+import com.hysd.service.imp.ClientManager;
 import com.opensymphony.xwork2.ActionSupport;
 
+/** 接受客户端发来的请求 */
 public class ClientManagerAction extends ActionSupport {
 	private static Logger logger = Logger.getLogger(ClientManagerAction.class);
 	private static final long serialVersionUID = 1L;
-	private String message;
-	private String data; 
+	private String data;
+	@Resource
+	private ClientManager clientManager;
+	private ResultPO resultPO;
+	private ParamPO paramPO;
 
 	public String execute() throws Exception {
 		logger.debug("ClientManager-receiveContent=" + data);
-		message = "fail";
+
 		ObjectMapper mapper = new ObjectMapper();
-		ParamPO paramPO = mapper.readValue(data, ParamPO.class);
+		paramPO = mapper.readValue(data, ParamPO.class);
+		resultPO = new ResultPO();
 		// TODO 处理信息
-		
-		message = "ok";
+		clientManager.actions(paramPO, resultPO);
+
 		return "json";
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	public ResultPO getResultPO() {
+		return resultPO;
 	}
 
 }
