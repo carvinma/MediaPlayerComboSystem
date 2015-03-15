@@ -1,23 +1,55 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="<%=basePath%>">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>演示：最新SSH2架构原型：Struts2.3.16+Spring4.1.1+Hibernate4.3.6</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">
-</head>
-<body>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+<script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<!-- Demo page code -->
 
-	演示：最新SSH2架构原型：Struts2.3.16+Spring4.1.1+Hibernate4.3.6<br/>
-	<a href="login.jsp">登录</a>
+<style type="text/css">
+#line-chart {
+	height: 300px;
+	width: 800px;
+	margin: 0px auto;
+	margin-top: 1em;
+}
+
+.brand {
+	font-family: georgia, serif;
+}
+
+.brand .first {
+	color: #ccc;
+	font-style: italic;
+}
+
+.brand .second {
+	color: #fff;
+	font-weight: bold;
+}
+</style>
+ 
+</head>
+
+ 
+<body class="">
+
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp"/>
 	
+	<div class="content">
+		 
+	</div>
+
+	
+	 
+
 </body>
 </html>
+
+
