@@ -1,5 +1,6 @@
 package com.hysd.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -89,7 +90,10 @@ public class ClientAction extends BaseAction {
 
 	public String list() {
 		log.debug("START: ClientAction-list()");
-		if(StringUtils.isEmpty((String) param.get("superId"))){
+		if (param == null) {
+			param = new HashMap<String, Object>();
+		}
+		if (StringUtils.isEmpty((String) param.get("superId"))) {
 			param.put("superId", 0);
 		}
 		// 获取页面的参数

@@ -1,5 +1,6 @@
 package com.hysd.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -65,6 +66,7 @@ public class MediaAction extends BaseAction {
 
 	public String save() {
 		log.debug("START: MediaAction-save()");
+		
 		mediaService.save(media);
 		message = "ok";
 		log.debug("END  : MediaAction-save()");
@@ -81,13 +83,20 @@ public class MediaAction extends BaseAction {
 
 	public String load() {
 		log.debug("START: MediaAction-load()");
-		media = mediaService.findById(id);
+		if (id != null) {
+			media = mediaService.findById(id);
+		} else {
+			media = new Media();
+		}
 		log.debug("END  : MediaAction-load()");
 		return "load";
 	}
 
 	public String list() {
 		log.debug("START: MediaAction-list()");
+		if (param == null) {
+			param = new HashMap<String, Object>();
+		}
 		// 获取页面的参数
 		page = mediaService.list(page, param);
 		log.debug("END  : MediaAction-list()");

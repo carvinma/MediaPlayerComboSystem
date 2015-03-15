@@ -27,7 +27,7 @@ public class Eqinfo extends BaseDomain implements Serializable {
 	private Integer stateId;
 	private Long clientId;
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "sn", name = "sn", insertable = false, updatable = false)
 	private List<Eqmonitorinfo> list;
 

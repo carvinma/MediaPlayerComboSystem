@@ -81,6 +81,10 @@
 			<result name="tolist" type="redirect">eqmonitorinfo_list.do</result>
 			<result name="{1}">/WEB-INF/eqmonitorinfo/{1}.jsp</result>
 		</action>
+		<action name="eqmedia_*" method="{1}" class="com.hysd.action.EqmediaAction">
+			<result name="tolist" type="redirect">eqmedia_list.do</result>
+			<result name="{1}">/WEB-INF/eqmedia/{1}.jsp</result>
+		</action>
 		<action name="client_*" method="{1}" class="com.hysd.action.ClientAction">
 			<result name="tolist" type="redirect">client_list.do</result>
 			<result name="{1}">/WEB-INF/client/{1}.jsp</result>

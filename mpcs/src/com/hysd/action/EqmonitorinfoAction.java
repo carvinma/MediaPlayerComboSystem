@@ -1,10 +1,10 @@
 package com.hysd.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
@@ -89,8 +89,8 @@ public class EqmonitorinfoAction extends BaseAction {
 
 	public String list() {
 		log.debug("START: EqmonitorinfoAction-list()");
-		if(StringUtils.isEmpty((String) param.get("superId"))){
-			param.put("superId", 0);
+		if(param==null){
+			param=new HashMap<String, Object>();
 		}
 		// 获取页面的参数
 		page = eqmonitorinfoService.list(page, param);

@@ -17,8 +17,8 @@ import javax.persistence.Table;
 public class Eqmonitorinfo  extends BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String sn;
-	private Integer ip;
-	private Integer mac;
+	private String ip;
+	private String mac;
 	private String phone;
 	private String imei;
 	private Date updateDate;
@@ -30,16 +30,16 @@ public class Eqmonitorinfo  extends BaseDomain implements Serializable {
 	public void setSn(String sn){
 		this.sn=sn;
 	}
-	public Integer getIp(){
+	public String getIp(){
 		return this.ip;
 	}
-	public void setIp(Integer ip){
+	public void setIp(String ip){
 		this.ip=ip;
 	}
-	public Integer getMac(){
+	public String getMac(){
 		return this.mac;
 	}
-	public void setMac(Integer mac){
+	public void setMac(String mac){
 		this.mac=mac;
 	}
 	public String getPhone(){

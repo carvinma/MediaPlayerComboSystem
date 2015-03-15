@@ -3,7 +3,11 @@ package com.hysd.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +26,14 @@ public class Eqmedia extends BaseDomain implements Serializable {
 	private Integer canDownLoad;
 	private Integer canPlay;
 	private Date updateTime;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "eqId", insertable = false, updatable = false)
+	private Eqinfo eqinfo;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "mediaId", insertable = false, updatable = false)
+	private Media media;
 
 	public Long getEqId() {
 		return this.eqId;
@@ -61,6 +73,22 @@ public class Eqmedia extends BaseDomain implements Serializable {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Eqinfo getEqinfo() {
+		return eqinfo;
+	}
+
+	public void setEqinfo(Eqinfo eqinfo) {
+		this.eqinfo = eqinfo;
+	}
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.hysd.service.imp;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +25,34 @@ public class MediaServiceImpl implements MediaService {
 
 	@Override
 	public void save(Media entity) {
+		String filePath = entity.getUrl();
+		File file = new File(filePath);
+		String fileName = file.getName();
+		// 设置文件大小
+		entity.setMediaSize(convertFileSize(file.length()));
+		// 设置文件格式
+		entity.setMediaType(fileName.substring(fileName.lastIndexOf(".") + 1));
+		// 设置更新时间
+		entity.setUpdateTime(new Date());
 		dao.save(entity);
+	}
+
+	/** 文件大小 */
+	private String convertFileSize(long size) {
+		long kb = 1024;
+		long mb = kb * 1024;
+		long gb = mb * 1024;
+
+		if (size >= gb) {
+			return String.format("%.1f GB", (float) size / gb);
+		} else if (size >= mb) {
+			float f = (float) size / mb;
+			return String.format(f > 100 ? "%.0f MB" : "%.1f MB", f);
+		} else if (size >= kb) {
+			float f = (float) size / kb;
+			return String.format(f > 100 ? "%.0f KB" : "%.1f KB", f);
+		} else
+			return String.format("%d B", size);
 	}
 
 	@Override
