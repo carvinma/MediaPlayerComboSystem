@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<!-- 指定Web应用的默认编码，相当于调用request的setCharacterEncoding方法 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 设置浏览器是否缓存静态内容，默认值为true(生产环境下使用)，开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当Struts2的配置文件修改后，系统是否自动重新加载配置文件，默认值为false(生产环境下使用)，开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 开发模式下使用，这样可以打印出更详细的日志信息 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 把Action对象交给Spring创建和管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- Struts2处理的请求后缀,默认值是action -->
+	<constant name="struts.action.extension" value="do" />
+
+	<!-- 国际化资源文件 <constant name="struts.custom.i18n.resources" value="globalMessages" 
+		/> -->
+
+	<package name="mpcs-default" extends="struts-default,json-default"
+		abstract="true">
+		<default-action-ref name="login" />
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<action name="login">
+			<result>/login.jsp</result>
+		</action>
+		<action name="indexPage">
+			<result>/login.jsp</result>
+		</action>
+	</package>
+	
+	<package name="/login" extends="struts-default">
+		<action name="login" method="login" class="com.hysd.action.LoginAction">
+			<result name="success"  type="redirect">/index.do</result>
+			<result name="failure">/failure.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+	</package>
+	<package name="mpcs" extends="struts-default">
+		 
+		<!--  <interceptors>
+			<interceptor name="checkLogin" class="cn.yingtian.oa.interceptor.CheckLoginInterceptor" />
+			自定义一个拦截器栈
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="checkLogin" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault" /> -->
+		
+		 
+		<action name="index">
+			<result>/index.jsp</result>      <!-- index.htm为项目根目录的默认页面 -->
+		</action>
+		<action name="user_*" method="{1}" class="com.hysd.action.UserAction">
+			<result name="tolist" type="redirect">/WEB-INF/user/user_{1}.jsp</result>
+			<result name="{1}">/WEB-INF/user/{1}.jsp</result>
+		</action>
+		<action name="media_*" method="{1}" class="com.hysd.action.MediaAction">
+			<result name="tolist" type="redirect">media_list.do</result>
+			<result name="{1}">/WEB-INF/media/{1}.jsp</result>
+		</action>
+		<action name="category_*" method="{1}" class="com.hysd.action.CategoryAction">
+			<result name="tolist" type="redirect">category_list.do</result>
+			<result name="{1}">/WEB-INF/category/{1}.jsp</result>
+		</action>
+		<action name="eqinfo_*" method="{1}" class="com.hysd.action.EqinfoAction">
+			<result name="tolist" type="redirect">eqinfo_list.do</result>
+			<result name="{1}">/WEB-INF/eqinfo/{1}.jsp</result>
+		</action>
+		<action name="eqmonitorinfo_*" method="{1}" class="com.hysd.action.EqmonitorinfoAction">
+			<result name="tolist" type="redirect">eqmonitorinfo_list.do</result>
+			<result name="{1}">/WEB-INF/eqmonitorinfo/{1}.jsp</result>
+		</action>
+		<action name="client_*" method="{1}" class="com.hysd.action.ClientAction">
+			<result name="tolist" type="redirect">client_list.do</result>
+			<result name="{1}">/WEB-INF/client/{1}.jsp</result>
+		</action>
+	</package>
+
+	<package name="mpcsclient" extends="json-default">
+		<action name="client" class="com.hysd.action.ClientManagerAction">
+			<result name="json" type="json" />
+		</action>
+	</package>
+
+
+</struts>
+
