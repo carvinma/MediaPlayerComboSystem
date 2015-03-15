@@ -12,7 +12,7 @@
 <script src="lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
-<body class="one">
+<body class="eqinfo">
 	<jsp:include page="/header.jsp"/>
 	<jsp:include page="/menu.jsp"/>
 	
@@ -27,10 +27,7 @@
 		
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="btn-toolbar">
-						<button class="btn btn-primary"><i class="icon-plus"></i> 返回</button>
-					</div>
-					  
+					 
 						<div class="well">
 							<table class="table">
 								<thead>
@@ -41,28 +38,27 @@
 										<th>手机号</th>
 										<th>IMEI</th>
 										<th>上传日期</th>
-										<th>上传时间</th>
 										<th>上传数据</th>
 										<th>下载数据</th> 
 									</tr>
 								</thead>
 								<tbody>
-									<s:iterator value="page.dataList" >
+									<s:iterator value="eqinfo.list" >
 									<tr>
 										<td>${index+1}</td>
-										<td>${IP}</td>
-										<td>${MAC}</td>
+										<td>${ip}</td>
+										<td>${mac}</td>
 										<td>${phone}</td>
-										<td>${phone}</td>
-										<td>${phone}</td>
-										<td>${phone}</td>
-										 
+										<td>${imei}</td>
+										<td><s:date format="yyyy-MM-dd HH:mm:ss" name="updateDate"  /></td>
+										<td>${updateByte}</td>
+										<td>${downloadByte}</td>
 									</tr>
 									</s:iterator>
 								</tbody>
 							</table>
 						</div>
-						<div class="pagination">
+						<%-- <div class="pagination">
 							<ul>
 								<li><a>当前${page.pageNo}页 / 共${page.totalPages}页</a></li>
 								<li><a href="javascript:jumpPage(1);">首页</a></li>
@@ -71,8 +67,7 @@
 								<li><a href="javascript:jumpPage(${page.totalPages});">末页</a></li>
 								 
 							</ul>
-						</div>
-					</form>
+						</div> --%>
 		
 				</div>
 			</div>

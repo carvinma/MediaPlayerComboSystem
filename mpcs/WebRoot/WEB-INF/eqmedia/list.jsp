@@ -13,41 +13,38 @@
 <script src="lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="lib/table.js" type="text/javascript"></script>
 </head>
-<body class="eqinfo">
+<body class="media">
 	<jsp:include page="/header.jsp"/>
 	<jsp:include page="/menu.jsp"/>
 	
 	<div class="content">
 	
-			<div class="header"><h1 class="page-title">机台讯息</h1></div>
+			<div class="header"><h1 class="page-title">档案管理</h1></div>
 		
 			<ul class="breadcrumb">
-				<li>实时状态 </li>
+				<li>机台档案</li>
 			</ul>
 		
 			<div class="container-fluid">
 				<div class="row-fluid">
 		
-					<!-- <div class="btn-toolbar">
-						<button class="btn btn-primary">
-							<i class="icon-plus"></i> New User
-						</button>
-						<button class="btn">Import</button>
-						<button class="btn">Export</button>
-						<div class="btn-group"></div>
-					</div> -->
-					<form id="mainForm" action="<%=request.getContextPath()%>/eqinfo_list.do" method="post">
+					<div class="btn-toolbar">
+						<a class="btn btn-primary" href="media_load.do">
+							<i class="icon-plus"></i> 新增
+						</a>
+					</div>
+					<form id="mainForm" action="<%=request.getContextPath()%>/eqmedia_list.do" method="post">
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
 						<div class="well">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>NO</th>
-										<th>SN</th>
-										<th>上传时间</th>
-										<th>组别</th>
-										<th>URL</th>
-										<th>描述</th>
+										<th>设备SN</th>
+										<th>多媒体名称</th>
+										<th>可以下载</th>
+										<th>可以播放</th>
+										<th>更新时间</th>
 										<th style="width: 26px;"></th>
 									</tr>
 								</thead>
@@ -55,12 +52,13 @@
 									<s:iterator value="page.dataList" >
 									<tr>
 										<td>${index+1}</td>
-										<td>${sn}</td>
-										<td>${area}</td>
-										<td>${categoryId}</td>
-										<td><c:if test="${stateId==1}">在线</c:if><c:if test="${stateId==0}">离线</c:if></td>
+										<td>${eqinfo.sn}</td>
+										<td>${media.mediaName}</td>
+										<td><s:if test="canDownLoad==1">是</s:if><s:else>否</s:else></td>
+										<td><s:if test="canPlay==1">是</s:if><s:else>否</s:else></td>
+										<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 										<td>
-											<a href="<%=request.getContextPath()%>/eqinfo_load.do?id=${id}"><i class="icon-pencil"></i></a> 
+											<a href="<%=request.getContextPath()%>/eqmedia_load.do?id=${id}"><i class="icon-pencil"></i></a> 
 										</td>
 									</tr>
 									</s:iterator>
