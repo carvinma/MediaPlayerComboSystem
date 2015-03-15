@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+response.sendRedirect("eqinfo_list.do");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +43,7 @@
 <body class="">
 
 	<jsp:include page="header.jsp"/>
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 	
 	<div class="content">
 		 
