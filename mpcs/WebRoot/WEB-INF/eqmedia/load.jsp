@@ -19,7 +19,7 @@ $(function(){
 });
 </script>
 </head>
-<body class="media">
+<body class="eqinfo">
 	<jsp:include page="/header.jsp"/>
 	<jsp:include page="/menu.jsp"/>
 	
@@ -28,8 +28,8 @@ $(function(){
 			<div class="header"><h1 class="page-title">档案管理</h1></div>
 		
 			<ul class="breadcrumb">
-				<li><a href="media_list.do">机台档案</a><span class="divider">/</span></li>
-				<li class="active">详细</li>
+				<li><a href="media_list.do">实时状态</a><span class="divider">/</span></li>
+				<li class="active"><a href="eqmedia_list.do?eqId=${eqmedia.id}">机台档案</a><span class="divider">/</span></li>
 				 
 			</ul>
 		
