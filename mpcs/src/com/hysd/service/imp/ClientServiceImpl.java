@@ -46,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Client> list(Page<Client> page, Map<String, Object> params) {
+	public Page<Client> list(Page<Client> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<Client>();
 		}

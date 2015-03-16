@@ -15,6 +15,6 @@ public interface MediaService {
 
 	public void delete(Media entity);
 
-	Page<Media> list(Page<Media> page, Map<String, Object> map);
+	Page<Media> list(Page<Media> page, Map<String, String> map);
 
 }

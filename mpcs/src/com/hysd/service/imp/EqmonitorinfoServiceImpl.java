@@ -44,7 +44,7 @@ public class EqmonitorinfoServiceImpl implements EqmonitorinfoService {
 	}
 
 	/**分页查询*/
-	public Page<Eqmonitorinfo> list(Page<Eqmonitorinfo> page, Map<String, Object> params) {
+	public Page<Eqmonitorinfo> list(Page<Eqmonitorinfo> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<Eqmonitorinfo>();
 		}

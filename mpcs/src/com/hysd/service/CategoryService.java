@@ -16,7 +16,7 @@ public interface CategoryService {
 
 	public void delete(Category entity);
 
-	Page<Category> list(Page<Category> page, Map<String, Object> map);
+	Page<Category> list(Page<Category> page, Map<String, String> map);
 
 	/** 判断是否已存在code */
 	public boolean hasCode(String code, Long id);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 此类由MySQLToBean工具自动生成
@@ -20,7 +21,10 @@ public class Category extends BaseDomain implements Serializable {
 	private String categoryCode;
 	private String categoryName;
 	private String categoryValue;
+	private String categoryLevel;
 	private Integer isDelete;
+	@Transient
+	private Category superCategory;
 
 	public Long getSuperId() {
 		return superId;
@@ -54,12 +58,28 @@ public class Category extends BaseDomain implements Serializable {
 		this.categoryValue = categoryValue;
 	}
 
+	public String getCategoryLevel() {
+		return categoryLevel;
+	}
+
+	public void setCategoryLevel(String categoryLevel) {
+		this.categoryLevel = categoryLevel;
+	}
+
 	public Integer getIsDelete() {
 		return isDelete;
 	}
 
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
+	}
+
+	public Category getSuperCategory() {
+		return superCategory;
+	}
+
+	public void setSuperCategory(Category superCategory) {
+		this.superCategory = superCategory;
 	}
 
 }

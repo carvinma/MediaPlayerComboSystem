@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 分页查询
 	 */
-	public Page<User> list(Page<User> page, Map<String, Object> params) {
+	public Page<User> list(Page<User> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<User>();
 		}

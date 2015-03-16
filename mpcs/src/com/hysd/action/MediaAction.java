@@ -17,7 +17,7 @@ public class MediaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(MediaAction.class);
 	private Page<Media> page = new Page<Media>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private Media media;
 	private Long id;
@@ -56,17 +56,16 @@ public class MediaAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
 	public String save() {
 		log.debug("START: MediaAction-save()");
-		
 		mediaService.save(media);
 		message = "ok";
 		log.debug("END  : MediaAction-save()");
@@ -95,10 +94,11 @@ public class MediaAction extends BaseAction {
 	public String list() {
 		log.debug("START: MediaAction-list()");
 		if (param == null) {
-			param = new HashMap<String, Object>();
+			param = new HashMap<String, String>();
 		}
 		// 获取页面的参数
 		page = mediaService.list(page, param);
+		getServletRequest().setAttribute("param", param);
 		log.debug("END  : MediaAction-list()");
 		return "list";
 	}

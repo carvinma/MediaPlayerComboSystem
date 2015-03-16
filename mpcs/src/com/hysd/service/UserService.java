@@ -15,7 +15,7 @@ public interface UserService {
 
 	public void delete(User user);
 
-	Page<User> list(Page<User> page, Map<String, Object> map);
+	Page<User> list(Page<User> page, Map<String, String> map);
 
 	public User findByLoginName(String loginname);
 	/**判断是否已存在用户名*/

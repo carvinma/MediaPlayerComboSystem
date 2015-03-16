@@ -14,6 +14,6 @@ public interface EqmonitorinfoService {
 
 	public void delete(Eqmonitorinfo entity);
 
-	Page<Eqmonitorinfo> list(Page<Eqmonitorinfo> page, Map<String, Object> map);
+	Page<Eqmonitorinfo> list(Page<Eqmonitorinfo> page, Map<String, String> map);
 	 
 }

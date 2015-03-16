@@ -15,18 +15,23 @@ import com.hysd.dao.BaseDAO;
 import com.hysd.domain.Media;
 import com.hysd.domain.page.Page;
 import com.hysd.service.MediaService;
+import com.hysd.util.Struts2Utils;
 
 @Transactional
 // 启用事务机制
 @Service("mediaService")
 public class MediaServiceImpl implements MediaService {
+
 	@Resource
 	private BaseDAO<Media> dao;
 
 	@Override
 	public void save(Media entity) {
+		// 获取当前项目的路径
+		// TODO
+		String basePath = Struts2Utils.getRequest().getRequestURL() + "/movie/";
 		String filePath = entity.getUrl();
-		File file = new File(filePath);
+		File file = new File(basePath + filePath);
 		String fileName = file.getName();
 		// 设置文件大小
 		entity.setMediaSize(convertFileSize(file.length()));
@@ -75,7 +80,7 @@ public class MediaServiceImpl implements MediaService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Media> list(Page<Media> page, Map<String, Object> params) {
+	public Page<Media> list(Page<Media> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<Media>();
 		}
@@ -87,10 +92,9 @@ public class MediaServiceImpl implements MediaService {
 			whereHql.append(" where ");
 
 			if (params.get("mediaName") != null) {
-				whereHql.append(" mediaName like '%?%'");
-				paramlist.add(params.get("mediaName"));
+				whereHql.append(" mediaName like ?");
+				paramlist.add(params.get("%" + "mediaName" + "%"));
 			}
-
 		}
 
 		// 获取总数据

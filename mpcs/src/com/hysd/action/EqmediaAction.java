@@ -17,7 +17,7 @@ public class EqmediaAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(EqmediaAction.class);
 	private Page<Eqmedia> page = new Page<Eqmedia>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private Eqmedia eqmedia;
 	private Long id;
@@ -56,11 +56,11 @@ public class EqmediaAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
@@ -94,10 +94,11 @@ public class EqmediaAction extends BaseAction {
 	public String list() {
 		log.debug("START: EqeqeqmediaAction-list()");
 		if (param == null) {
-			param = new HashMap<String, Object>();
+			param = new HashMap<String, String>();
 		}
 		// 获取页面的参数
 		page = eqmediaService.list(page, param);
+		getServletRequest().setAttribute("param", param);
 		log.debug("END  : EqeqeqmediaAction-list()");
 		return "list";
 	}

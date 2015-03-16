@@ -1,5 +1,6 @@
 package com.hysd.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ public class UserAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(UserAction.class);
 	private Page<User> page = new Page<User>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private User user;
 	private Long id;
@@ -57,11 +58,11 @@ public class UserAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
@@ -90,8 +91,12 @@ public class UserAction extends BaseAction {
 
 	public String list() {
 		log.debug("START: UserAction-list()");
+		if(param==null){
+			param=new HashMap<String, String>();
+		}
 		// 获取页面的参数
 		page = userService.list(page, param);
+		getServletRequest().setAttribute("param", param);
 		log.debug("END  : UserAction-list()");
 		return "list";
 	}

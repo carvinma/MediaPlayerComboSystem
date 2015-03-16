@@ -16,7 +16,7 @@ public interface EqmediaService {
 
 	public void delete(Eqmedia entity);
 
-	Page<Eqmedia> list(Page<Eqmedia> page, Map<String, Object> map);
+	Page<Eqmedia> list(Page<Eqmedia> page, Map<String, String> map);
 
 	public List<Eqmedia> findMedias(Long eqId);
 

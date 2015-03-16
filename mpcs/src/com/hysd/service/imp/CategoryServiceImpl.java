@@ -21,10 +21,23 @@ public class CategoryServiceImpl implements CategoryService {
 	@Resource
 	private BaseDAO<Category> dao;
 
+	public Category findById(Long id) {
+		Category category = dao.get(Category.class, id);
+		if (category.getSuperId() != null && category.getSuperId() > 0) {
+			category.setSuperCategory(dao.get(Category.class, category.getSuperId()));
+		}
+		return category;
+	}
+
 	@Override
 	public void save(Category entity) {
 		if (entity.getSuperId() == null) {
 			entity.setSuperId(0l);
+			entity.setCategoryLevel("1");
+		}
+
+		if (entity.getSuperId() > 0) {
+			entity.setCategoryLevel("2");
 		}
 		dao.save(entity);
 	}
@@ -39,11 +52,6 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category findById(Long id) {
-		return dao.get(Category.class, id);
-	}
-
-	@Override
 	public void delete(Category Category) {
 		dao.delete(Category);
 
@@ -52,7 +60,7 @@ public class CategoryServiceImpl implements CategoryService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Category> list(Page<Category> page, Map<String, Object> params) {
+	public Page<Category> list(Page<Category> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<Category>();
 		}
@@ -64,12 +72,12 @@ public class CategoryServiceImpl implements CategoryService {
 			whereHql.append(" where ");
 
 			if (params.get("categoryName") != null) {
-				whereHql.append(" categoryName like '%?%'");
-				paramlist.add(params.get("categoryName"));
+				whereHql.append(" categoryName like ?");
+				paramlist.add(params.get("%" + "categoryName") + "%");
 			}
-			if (params.get("superId") != null) {
-				whereHql.append(" superId = '?'");
-				paramlist.add(params.get("superId"));
+			if (params.containsKey("superId")) {
+				whereHql.append(" superId = ?");
+				paramlist.add(Long.valueOf(params.get("superId")));
 			}
 		}
 

@@ -14,7 +14,7 @@ public interface EqinfoService {
 
 	public void delete(Eqinfo entity);
 
-	Page<Eqinfo> list(Page<Eqinfo> page, Map<String, Object> map);
+	Page<Eqinfo> list(Page<Eqinfo> page, Map<String, String> map);
 
 	public Eqinfo findBySn(String sn);
 	 

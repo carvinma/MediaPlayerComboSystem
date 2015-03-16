@@ -14,6 +14,6 @@ public interface ClientService {
 
 	public void delete(Client entity);
 
-	Page<Client> list(Page<Client> page, Map<String, Object> map);
+	Page<Client> list(Page<Client> page, Map<String, String> map);
 	 
 }

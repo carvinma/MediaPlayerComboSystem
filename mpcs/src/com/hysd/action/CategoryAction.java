@@ -1,11 +1,11 @@
 package com.hysd.action;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
@@ -19,7 +19,7 @@ public class CategoryAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(CategoryAction.class);
 	private Page<Category> page = new Page<Category>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private Category category;
 	private Long id;
@@ -58,11 +58,11 @@ public class CategoryAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
@@ -104,11 +104,19 @@ public class CategoryAction extends BaseAction {
 
 	public String list() {
 		log.debug("START: CategoryAction-list()");
-		if(StringUtils.isEmpty((String) param.get("superId"))){
-			param.put("superId", 0);
+		
+		if(param==null){
+			param=new HashMap<String, String>();
 		}
+		
+		if(!param.containsKey("superId")){
+			param.put("superId", "0");
+		} 
+		System.out.println(param.get("superId").toString());
 		// 获取页面的参数
 		page = categoryService.list(page, param);
+		
+		//getServletRequest().setAttribute("param", param);
 		log.debug("END  : CategoryAction-list()");
 		return "list";
 	}

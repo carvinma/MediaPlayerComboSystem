@@ -18,7 +18,7 @@ public class ClientAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(ClientAction.class);
 	private Page<Client> page = new Page<Client>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private Client client;
 	private Long id;
@@ -57,11 +57,11 @@ public class ClientAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
@@ -91,13 +91,15 @@ public class ClientAction extends BaseAction {
 	public String list() {
 		log.debug("START: ClientAction-list()");
 		if (param == null) {
-			param = new HashMap<String, Object>();
+			param = new HashMap<String, String>();
 		}
 		if (StringUtils.isEmpty((String) param.get("superId"))) {
-			param.put("superId", 0);
+			param.put("superId", "0");
 		}
 		// 获取页面的参数
 		page = clientService.list(page, param);
+		
+		getServletRequest().setAttribute("param", param);
 		log.debug("END  : ClientAction-list()");
 		return "list";
 	}

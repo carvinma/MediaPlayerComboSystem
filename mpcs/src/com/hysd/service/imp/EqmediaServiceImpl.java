@@ -48,7 +48,7 @@ public class EqmediaServiceImpl implements EqmediaService {
 	/**
 	 * 分页查询
 	 */
-	public Page<Eqmedia> list(Page<Eqmedia> page, Map<String, Object> params) {
+	public Page<Eqmedia> list(Page<Eqmedia> page, Map<String, String> params) {
 		if (page == null) {
 			page = new Page<Eqmedia>();
 		}
@@ -65,7 +65,7 @@ public class EqmediaServiceImpl implements EqmediaService {
 			}
 			if (params.get("eqId") != null) {
 				whereHql.append(" a。eqId =?");
-				paramlist.add(params.get("eqId"));
+				paramlist.add(Long.valueOf(params.get("eqId")));
 			}
 
 		}

@@ -17,7 +17,7 @@ public class EqinfoAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getLogger(EqinfoAction.class);
 	private Page<Eqinfo> page = new Page<Eqinfo>();
-	private Map<String, Object> param;
+	private Map<String, String> param;
 	private String message;
 	private Eqinfo eqinfo;
 	private Long id;
@@ -56,11 +56,11 @@ public class EqinfoAction extends BaseAction {
 		this.page = page;
 	}
 
-	public Map<String, Object> getParam() {
+	public Map<String, String> getParam() {
 		return param;
 	}
 
-	public void setParam(Map<String, Object> param) {
+	public void setParam(Map<String, String> param) {
 		this.param = param;
 	}
 
@@ -90,10 +90,11 @@ public class EqinfoAction extends BaseAction {
 	public String list() {
 		log.debug("START: EqinfoAction-list()");
 		if(param==null){
-			param=new HashMap<String, Object>();
+			param=new HashMap<String, String>();
 		}
 		// 获取页面的参数
 		page = eqinfoService.list(page, param);
+		getServletRequest().setAttribute("param", param);
 		log.debug("END  : EqinfoAction-list()");
 		return "list";
 	}
