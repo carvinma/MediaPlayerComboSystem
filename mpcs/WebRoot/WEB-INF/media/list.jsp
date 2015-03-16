@@ -33,8 +33,15 @@
 							<i class="icon-plus"></i> 新增
 						</a>
 					</div>
-					<form id="mainForm" action="<%=request.getContextPath()%>/media_list.do" method="post">
-						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
+					<form id="mainForm"  class="form-inline search-form" action="<%=request.getContextPath()%>/media_list.do" method="post">
+						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" />
+					    
+					    <label for="param_sn">名称</label>
+					    <input id="param_sn" type="text" name="param[mediaName]" value="${param[mediaName]}"/> 
+						<button type="submit" class="btn btn-primary">查询</button>
+					</form>
+					
+					 
 						<div class="well">
 							<table class="table">
 								<thead>
@@ -47,7 +54,7 @@
 										<th>类型</th>
 										<th>大小</th>
 										<th>更新时间</th>
-										<th style="width: 26px;"></th>
+										<th style="width: 60px;">操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -62,7 +69,7 @@
 										<td>${mediaSize}</td>
 										<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 										<td>
-											<a href="<%=request.getContextPath()%>/media_load.do?id=${id}"><i class="icon-pencil"></i></a> 
+											<a href="<%=request.getContextPath()%>/media_load.do?id=${id}"><i class="icon-pencil"></i> 查看</a> 
 										</td>
 									</tr>
 									</s:iterator>
@@ -79,7 +86,6 @@
 								 
 							</ul>
 						</div>
-					</form>
 		
 				</div>
 			</div>

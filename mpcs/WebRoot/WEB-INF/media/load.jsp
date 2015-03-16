@@ -38,16 +38,16 @@
 						<div class="well">
 							<table class="table form">
 									<tr>
-										<th width="100px;">名称</th><td><input name="media.mediaName"/></td>
+										<th width="100px;">名称</th><td><input name="media.mediaName" value="${media.mediaName}"/></td>
 									</tr>
 								  	<tr>
-										<th>URL</th><td><input name="media.url"/></td>
+										<th>URL</th><td><input type="text" name="media.url" value="${media.url}"/></td>
 									</tr>
 									<tr>
-										<th>地区</th><td><input name="media.mediaArea"/></td>
+										<th>地区</th><td><input type="text" name="media.mediaArea" value="${media.mediaArea}"/></td>
 									</tr> 
 									<tr>
-										<th>地区组别</th><td><input name="media.mediaName"/></td>
+										<th>地区组别</th><td><input type="text" name="media.mediaGroup" value="${media.mediaGroup}"/></td>
 									</tr> 
 									<s:if test="media.id!=null">
 									<tr>
