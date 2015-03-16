@@ -23,16 +23,16 @@ public class Eqinfo extends BaseDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String sn;
 	private String area;
-	private Integer categoryId;
-	private Integer stateId;
+	private String group;
+	private String state;
 	private Long clientId;
 
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "sn", name = "sn", insertable = false, updatable = false)
 	private List<Eqmonitorinfo> list;
 
 	public String getSn() {
-		return this.sn;
+		return sn;
 	}
 
 	public void setSn(String sn) {
@@ -40,31 +40,31 @@ public class Eqinfo extends BaseDomain implements Serializable {
 	}
 
 	public String getArea() {
-		return this.area;
+		return area;
 	}
 
 	public void setArea(String area) {
 		this.area = area;
 	}
 
-	public Integer getCategoryId() {
-		return this.categoryId;
+	public String getGroup() {
+		return group;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setGroup(String group) {
+		this.group = group;
 	}
 
-	public Integer getStateId() {
-		return this.stateId;
+	public String getState() {
+		return state;
 	}
 
-	public void setStateId(Integer stateId) {
-		this.stateId = stateId;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public Long getClientId() {
-		return this.clientId;
+		return clientId;
 	}
 
 	public void setClientId(Long clientId) {
@@ -78,5 +78,7 @@ public class Eqinfo extends BaseDomain implements Serializable {
 	public void setList(List<Eqmonitorinfo> list) {
 		this.list = list;
 	}
+
+	 
 
 }

@@ -1,7 +1,7 @@
 package com.hysd.domain;
 
-
 public class MediaPO {
+	private String id;
 	private String mediaName;
 	private String url;
 	private String mediaArea;
@@ -11,6 +11,14 @@ public class MediaPO {
 	private String mediaType;
 	private String mediaSize;
 	private Integer isDelete;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getMediaName() {
 		return mediaName;

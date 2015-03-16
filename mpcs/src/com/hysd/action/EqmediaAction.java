@@ -69,7 +69,7 @@ public class EqmediaAction extends BaseAction {
 		eqmediaService.save(eqmedia);
 		message = "ok";
 		log.debug("END  : EqeqeqmediaAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {
@@ -82,15 +82,19 @@ public class EqmediaAction extends BaseAction {
 
 	public String load() {
 		log.debug("START: EqeqeqmediaAction-load()");
-		eqmedia = eqmediaService.findById(id);
+		if (id != null) {
+			eqmedia = eqmediaService.findById(id);
+		} else {
+			eqmedia = new Eqmedia();
+		}
 		log.debug("END  : EqeqeqmediaAction-load()");
 		return "load";
 	}
 
 	public String list() {
 		log.debug("START: EqeqeqmediaAction-list()");
-		if(param==null){
-			param=new HashMap<String, Object>();
+		if (param == null) {
+			param = new HashMap<String, Object>();
 		}
 		// 获取页面的参数
 		page = eqmediaService.list(page, param);

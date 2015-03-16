@@ -19,6 +19,15 @@ public class ResultPO implements Serializable {
 	private String msg;
 
 	private List<MediaPO> mlist;
+	private List<CategoryPO> clist;
+
+	public List<CategoryPO> getClist() {
+		return clist;
+	}
+
+	public void setClist(List<CategoryPO> clist) {
+		this.clist = clist;
+	}
 
 	public List<MediaPO> getMlist() {
 		return mlist;

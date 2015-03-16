@@ -70,7 +70,7 @@ public class UserAction extends BaseAction {
 		userService.save(user);
 		message = "ok";
 		log.debug("END  : UserAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {

@@ -60,26 +60,30 @@ public class EqmediaServiceImpl implements EqmediaService {
 			whereHql.append(" where ");
 
 			if (params.get("mediaName") != null) {
-				whereHql.append(" mediaName like '%?%'");
-				paramlist.add(params.get("mediaName"));
+				whereHql.append(" b.mediaName like ?");
+				paramlist.add("%"+params.get("mediaName")+"%");
+			}
+			if (params.get("eqId") != null) {
+				whereHql.append(" a。eqId =?");
+				paramlist.add(params.get("eqId"));
 			}
 
 		}
 
 		// 获取总数据
-		String counthql = " select count(id) from Eqmedia " + whereHql.toString();
+		String counthql = " select count(a.id) from Eqmedia a join a.media b" + whereHql.toString();
 		long count = dao.count(counthql, paramlist);
 		page.setTotalRow(count);
 		// 获取当前页的数据
-		whereHql.append(" order by id desc");
-		String listhql = "from Eqmedia " + whereHql.toString();
+		whereHql.append(" order by a.id desc");
+		String listhql = " from Eqmedia a join a.media b" + whereHql.toString();
 		page.setDataList(dao.find(listhql, paramlist));
 		return page;
 	}
 
 	@Override
-	public List<Eqmedia> findMedias(String sn) {
-		return dao.find("from Eqmedia where sn=?", new Object[] { sn });
+	public List<Eqmedia> findMedias(Long eqId) {
+		return dao.find("  from Eqmedia a where a.eqId=?", new Object[] { eqId });
 	}
 
 }

@@ -1,8 +1,12 @@
 package com.hysd.action;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.hysd.domain.ParamPO;
@@ -39,5 +43,25 @@ public class ClientManagerAction extends ActionSupport {
 	public ResultPO getResultPO() {
 		return resultPO;
 	}
-
+	
+	public static void main(String[] args) {
+		ParamPO po=new ParamPO();
+		po.setAct("getmedia");
+		po.setSn("1234567890");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			System.out.println(mapper.writeValueAsString(po));
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void save(Category entity) {
-		if(entity.getSuperId()==null){
+		if (entity.getSuperId() == null) {
 			entity.setSuperId(0l);
 		}
 		dao.save(entity);
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void update(Category entity) {
-		if(entity.getSuperId()==null){
+		if (entity.getSuperId() == null) {
 			entity.setSuperId(0l);
 		}
 		dao.update(entity);
@@ -97,6 +97,16 @@ public class CategoryServiceImpl implements CategoryService {
 		if (count == 0)
 			return false;
 		return true;
+	}
+
+	@Override
+	public List<Category> findByParentCode(String code) {
+		return dao.find("from Category a where superId=(select id from Category b where b.categoryCode=?)",
+				new Object[] { code });
+	}
+
+	public List<Category> findByCode(String code) {
+		return dao.find("from Category a where categoryCode=?", new Object[] { code });
 	}
 
 }

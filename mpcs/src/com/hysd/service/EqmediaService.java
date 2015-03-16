@@ -18,6 +18,6 @@ public interface EqmediaService {
 
 	Page<Eqmedia> list(Page<Eqmedia> page, Map<String, Object> map);
 
-	public List<Eqmedia> findMedias(String sn);
+	public List<Eqmedia> findMedias(Long eqId);
 
 }

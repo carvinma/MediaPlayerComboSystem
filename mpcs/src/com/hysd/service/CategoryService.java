@@ -1,5 +1,6 @@
 package com.hysd.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.hysd.domain.Category;
@@ -16,6 +17,11 @@ public interface CategoryService {
 	public void delete(Category entity);
 
 	Page<Category> list(Page<Category> page, Map<String, Object> map);
-	/**判断是否已存在code*/
-	public boolean hasCode(String code,Long id);
+
+	/** 判断是否已存在code */
+	public boolean hasCode(String code, Long id);
+
+	public List<Category> findByParentCode(String code);
+
+	public List<Category> findByCode(String code);
 }

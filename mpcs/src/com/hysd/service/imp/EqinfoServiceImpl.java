@@ -43,7 +43,7 @@ public class EqinfoServiceImpl implements EqinfoService {
 
 	}
 
-	/**分页查询*/
+	/** 分页查询 */
 	public Page<Eqinfo> list(Page<Eqinfo> page, Map<String, Object> params) {
 		if (page == null) {
 			page = new Page<Eqinfo>();
@@ -54,7 +54,15 @@ public class EqinfoServiceImpl implements EqinfoService {
 		List<Object> paramlist = new ArrayList<Object>();
 		if (params.size() > 0) {
 			whereHql.append(" where ");
-			// TODO 增加查询条件
+			
+			if (params.get("sn") != null) {
+				whereHql.append(" sn like ?");
+				paramlist.add("%"+params.get("sn")+"%");
+			}
+			if (params.get("area") != null) {
+				whereHql.append(" area =?");
+				paramlist.add(params.get("area"));
+			}
 		}
 
 		// 获取总数据
@@ -66,6 +74,11 @@ public class EqinfoServiceImpl implements EqinfoService {
 		String listhql = "from Eqinfo " + whereHql.toString();
 		page.setDataList(dao.find(listhql, paramlist));
 		return page;
+	}
+
+	@Override
+	public Eqinfo findBySn(String sn) {
+		return dao.get("from Eqinfo where sn=?", new Object[] { sn });
 	}
 
 }

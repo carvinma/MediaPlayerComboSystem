@@ -69,7 +69,7 @@ public class EqinfoAction extends BaseAction {
 		eqinfoService.save(eqinfo);
 		message = "ok";
 		log.debug("END  : EqinfoAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {

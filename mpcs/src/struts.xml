@@ -92,7 +92,7 @@
 	</package>
 
 	<package name="mpcsclient" extends="json-default">
-		<action name="client" class="com.hysd.action.ClientManagerAction">
+		<action name="clientManager" class="com.hysd.action.ClientManagerAction">
 			<result name="json" type="json" />
 		</action>
 	</package>

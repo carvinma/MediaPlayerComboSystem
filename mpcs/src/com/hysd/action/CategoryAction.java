@@ -84,7 +84,7 @@ public class CategoryAction extends BaseAction {
 		categoryService.save(category);
 		message = "ok";
 		log.debug("END  : CategoryAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {

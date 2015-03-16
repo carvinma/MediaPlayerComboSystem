@@ -91,4 +91,16 @@ public class Eqmedia extends BaseDomain implements Serializable {
 		this.media = media;
 	}
 
+	public Eqmedia(Long eqId, Long mediaId, Integer canDownLoad, Integer canPlay) {
+		super();
+		this.eqId = eqId;
+		this.mediaId = mediaId;
+		this.canDownLoad = canDownLoad;
+		this.canPlay = canPlay;
+	}
+
+	public Eqmedia() {
+		super();
+	}
+
 }

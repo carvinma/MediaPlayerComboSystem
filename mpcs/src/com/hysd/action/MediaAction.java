@@ -70,7 +70,7 @@ public class MediaAction extends BaseAction {
 		mediaService.save(media);
 		message = "ok";
 		log.debug("END  : MediaAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {

@@ -70,7 +70,7 @@ public class ClientAction extends BaseAction {
 		clientService.save(client);
 		message = "ok";
 		log.debug("END  : ClientAction-save()");
-		return "save";
+		return "tolist";
 	}
 
 	public String edit() {

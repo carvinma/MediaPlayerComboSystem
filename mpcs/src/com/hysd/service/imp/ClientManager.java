@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.hysd.domain.Category;
+import com.hysd.domain.CategoryPO;
 import com.hysd.domain.Client;
 import com.hysd.domain.ClientPO;
 import com.hysd.domain.Eqinfo;
@@ -24,10 +26,13 @@ import com.hysd.domain.Media;
 import com.hysd.domain.MediaPO;
 import com.hysd.domain.ParamPO;
 import com.hysd.domain.ResultPO;
+import com.hysd.service.CategoryService;
 import com.hysd.service.ClientService;
 import com.hysd.service.EqinfoService;
 import com.hysd.service.EqmediaService;
 import com.hysd.service.EqmonitorinfoService;
+import com.hysd.service.MediaService;
+import com.hysd.util.BeanUtilsEx;
 import com.hysd.util.DateUtils;
 
 @Service("clientManager")
@@ -42,6 +47,10 @@ public class ClientManager {
 	private EqmonitorinfoService eqmonitorinfoService;
 	@Resource
 	private EqmediaService eqmediaService;
+	@Resource
+	private MediaService mediaService;
+	@Resource
+	private CategoryService categoryService;
 
 	public void actions(ParamPO paramPO, ResultPO resultPO) throws Exception {
 		this.action(paramPO.getAct(), paramPO, resultPO);
@@ -66,6 +75,23 @@ public class ClientManager {
 			// 获取当前设备的多媒体信息
 			uploadInfo(paramPO, resultPO);
 		}
+		if ("getApk".equalsIgnoreCase(act)) {
+			// 获取当前设备的多媒体信息
+			getApk(paramPO, resultPO);
+		}
+	}
+
+	private void getApk(ParamPO paramPO, ResultPO resultPO) {
+		// 获取当前apk版本
+		List<Category> clist = categoryService.findByParentCode("APK");
+		List<CategoryPO> polist = new ArrayList<CategoryPO>();
+		for (Category category : clist) {
+			CategoryPO po = new CategoryPO();
+			BeanUtilsEx.copyProperties(po, category);
+			polist.add(po);
+		}
+		resultPO.setClist(polist);
+		resultPO.ok();
 	}
 
 	/** 上传当前状态 */
@@ -82,13 +108,14 @@ public class ClientManager {
 	private void getMedias(ParamPO paramPO, ResultPO resultPO) throws IllegalAccessException, InvocationTargetException {
 		// 获取sn
 		String sn = paramPO.getSn();
+		Eqinfo eqinfo = eqinfoService.findBySn(sn);
 		// 获取多媒体视频
-		List<Eqmedia> mlist = eqmediaService.findMedias(sn);
+		List<Eqmedia> mlist = eqmediaService.findMedias(eqinfo.getId());
 		List<MediaPO> polist = new ArrayList<MediaPO>();
 		for (Eqmedia eqmedia : mlist) {
 			MediaPO po = new MediaPO();
-			Media media = eqmedia.getMedia();
-			BeanUtils.copyProperties(media, po);
+			Media media = mediaService.findById(eqmedia.getMediaId());
+			BeanUtilsEx.copyProperties(po, media);
 			po.setUpdateTime(DateUtils.dateFormat(media.getUpdateTime(), "yyyy-MM-dd HH:mm:ss"));
 			polist.add(po);
 		}
