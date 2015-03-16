@@ -47,3 +47,7 @@ textarea {
 select{
 	width: 214px;
 }
+.search-form label{
+		margin-right:5px;
+		margin-left:10px;
+	}
