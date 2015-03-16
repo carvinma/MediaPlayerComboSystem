@@ -19,10 +19,10 @@
 	
 	<div class="content">
 	
-			<div class="header"><h1 class="page-title">档案管理</h1></div>
+			<div class="header"><h1 class="page-title">系统管理</h1></div>
 		
 			<ul class="breadcrumb">
-				<li>档案信息</li>
+				<li>档用户信息</li>
 			</ul>
 		
 			<div class="container-fluid">
@@ -33,20 +33,18 @@
 							<i class="icon-plus"></i> 新增
 						</a>
 					</div>
-					<form id="mainForm" action="<%=request.getContextPath()%>/media_list.do" method="post">
+					<form id="mainForm" action="<%=request.getContextPath()%>/user_list.do" method="post">
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
 						<div class="well">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>NO</th>
-										<th>名称</th>
-										<th>URL</th>
-										<th>地区</th>
-										<th>组别</th>
-										<th>类型</th>
-										<th>大小</th>
-										<th>更新时间</th>
+										<th>登录名</th>
+										<th>用户名</th>
+										<th>管理员</th>
+										<th>创建时间</th>
+										<th>修改时间</th>
 										<th style="width: 60px;">操作</th>
 									</tr>
 								</thead>
@@ -54,15 +52,13 @@
 									<s:iterator value="page.dataList" >
 									<tr>
 										<td>${index+1}</td>
-										<td>${mediaName}</td>
-										<td>${url}</td>
-										<td>${mediaArea}</td>
-										<td>${mediaGroup}</td>
-										<td>${mediaType}</td>
-										<td>${mediaSize}</td>
+										<td>${loginName}</td>
+										<td>${userName}</td>
+										<td><s:if test="isAdmin==1">是</s:if><s:else>否</s:else></td>
+										<td><s:date name="createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 										<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 										<td>
-											<a href="<%=request.getContextPath()%>/media_load.do?id=${id}"><i class="icon-pencil">查看</i></a> 
+											<a href="<%=request.getContextPath()%>/user_load.do?id=${id}"><i class="icon-pencil">查看</i></a> 
 										</td>
 									</tr>
 									</s:iterator>

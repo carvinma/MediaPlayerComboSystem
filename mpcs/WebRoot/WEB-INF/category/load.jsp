@@ -29,40 +29,26 @@
 		
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<form id="mainForm" action="<%=request.getContextPath()%>/media_save.do" method="post">
-						<input type="hidden" name="media.id" value="${media.id}" /> 
+					<form id="mainForm" action="<%=request.getContextPath()%>/category_save.do" method="post">
+						<input type="hidden" name="category.id" value="${category.id}" /> 
+						<input type="hidden" name="category.superId" value="${category.superId}" /> 
 						<div class="btn-toolbar">
 							<button class="btn btn-primary">保存</button>
-							<a class="btn btn-primary" href="media_list.do">返回</a>
+							<a class="btn btn-primary" href="category_list.do?param['super']=category.superId">返回</a>
 						</div>
 						<div class="well">
 							<table class="table form">
-									<tr>
-										<th width="100px;">名称</th><td><input name="media.mediaName" value="${media.mediaName}"/></td>
-									</tr>
-								  	<tr>
-										<th>URL</th><td><input name="media.url" value="${media.url}"/></td>
-									</tr>
-									<tr>
-										<th>地区</th><td><input name="media.mediaArea" value="${media.mediaArea}"/></td>
-									</tr> 
-									<tr>
-										<th>地区组别</th><td><input name="media.mediaGroup" value="${media.mediaGroup}"/></td>
-									</tr> 
-									<s:if test="media.id!=null">
-									<tr>
-										<th>类型</th><td>${media.mediaType}</td>
-									</tr> 
-									<tr>
-										<th>大小</th><td>${media.mediaSize}</td>
-									</tr>
-									
-									<tr>
-										<th>更新时间</th><td><s:date name="media.updateTime" format="yyyy-MM-dd HH:mm:ss"/></td>
-									</tr> 
+									<s:if test="category.superCategory!=null">
+									<tr><th>所属</th><td>${category.superCategory.categoryName}</td></tr>
 									</s:if>
 									<tr>
-										<th>描述</th><td><textarea name="media.description">${media.description}</textarea></td>
+										<th width="100px;">code</th><td><input name="category.categoryCode" value="${category.categoryCode}"/></td>
+									</tr>
+								  	<tr>
+										<th>名称</th><td><input name="category.categoryName" value="${category.categoryName}"/></td>
+									</tr>
+									<tr>
+										<th>值</th><td><input name="category.categoryValue" value="${category.categoryValue}"/></td>
 									</tr> 
 								</tbody>
 							</table>

@@ -39,7 +39,7 @@
 					<form id="mainForm" class="form-inline search-form" action="<%=request.getContextPath()%>/eqinfo_list.do" method="post">
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
 						<label for="param_area">地区</label>
-					    <select id="param_area" name="param[area]">
+					    <select id="param_area" name="param['area']">
 							<option value=""></option>
 							<option value="上海">上海</option>
 							<option value="北京">北京</option>
@@ -47,7 +47,7 @@
 							<option value="成都">成都</option>
 						</select>
 					    <label for="param_sn">SN</label>
-					    <input id="param_sn" type="text" name="param[sn]" value="${param[sn]}"/> 
+					    <input id="param_sn" type="text" name="param['sn']" value="${param['sn']}"/> 
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
 					<div class="btn-toolbar">
@@ -77,7 +77,7 @@
 										<td>${group}</td>
 										<td><s:if test="state==1">在线</s:if><s:else>离线</s:else></td>
 										<td>
-											<a href="<%=request.getContextPath()%>/eqmedia_list.do?param[eqId]=${id}"><i class="icon-pencil">查看</i></a> 
+											<a href="<%=request.getContextPath()%>/eqmedia_list.do?param['eqId']=${id}"><i class="icon-pencil">查看</i></a> 
 										</td>
 									</tr>
 									</s:iterator>

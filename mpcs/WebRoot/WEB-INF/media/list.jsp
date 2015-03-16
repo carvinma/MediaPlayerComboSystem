@@ -37,7 +37,7 @@
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" />
 					    
 					    <label for="param_sn">名称</label>
-					    <input id="param_sn" type="text" name="param[mediaName]" value="${param[mediaName]}"/> 
+					    <input id="param_sn" type="text" name="param['mediaName']" value="${param['mediaName']}"/> 
 						<button type="submit" class="btn btn-primary">查询</button>
 					</form>
 					

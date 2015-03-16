@@ -14,6 +14,7 @@
 <script src="lib/table.js" type="text/javascript"></script>
 </head>
 <body class="sys">
+
 	<jsp:include page="/header.jsp"/>
 	<jsp:include page="/menu.jsp"/>
 	
@@ -29,40 +30,43 @@
 				<div class="row-fluid">
 		
 					<div class="btn-toolbar">
-						<a class="btn btn-primary" href="media_load.do">
+						<a class="btn btn-primary" href="category_load.do">
 							<i class="icon-plus"></i> 新增
 						</a>
+						<s:if test="param['superId']!=null && param['superId']!=0">
+						<a class="btn btn-primary" href="category_list.do?param['superId']=<s:property value="param['superId']"/>">
+							返回${param['superId'].value }
+						</a>
+						</s:if>
+						
 					</div>
-					<form id="mainForm" action="<%=request.getContextPath()%>/media_list.do" method="post">
+					<form id="mainForm" action="<%=request.getContextPath()%>/category_list.do" method="post">
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
+						<input type="hidden" name="param['superId']" value="${param['superId']}" /> 
+						
 						<div class="well">
 							<table class="table">
 								<thead>
 									<tr>
 										<th>NO</th>
+										<th>code</th>
 										<th>名称</th>
-										<th>URL</th>
-										<th>地区</th>
-										<th>组别</th>
-										<th>类型</th>
-										<th>大小</th>
-										<th>更新时间</th>
-										<th style="width: 60px;">操作</th>
+										<th>值</th>
+										<th style="width: 100px;">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 									<s:iterator value="page.dataList" >
 									<tr>
 										<td>${index+1}</td>
-										<td>${mediaName}</td>
-										<td>${url}</td>
-										<td>${mediaArea}</td>
-										<td>${mediaGroup}</td>
-										<td>${mediaType}</td>
-										<td>${mediaSize}</td>
-										<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+										<td>${categoryCode}</td>
+										<td>${categoryName}</td>
+										<td>${categoryValue}</td>
 										<td>
-											<a href="<%=request.getContextPath()%>/media_load.do?id=${id}"><i class="icon-pencil">查看</i></a> 
+											<a href="<%=request.getContextPath()%>/category_load.do?id=${id}"><i class="icon-pencil">修改</i></a> 
+											<s:if test="categoryLevel==1">
+											<a href="<%=request.getContextPath()%>/category_list.do?param['superId']=${id}"><i class="icon-pencil">详细</i></a>
+											</s:if>
 										</td>
 									</tr>
 									</s:iterator>
