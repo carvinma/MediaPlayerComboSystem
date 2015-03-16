@@ -36,31 +36,48 @@
 						<button class="btn">Export</button>
 						<div class="btn-group"></div>
 					</div> -->
-					<form id="mainForm" action="<%=request.getContextPath()%>/eqinfo_list.do" method="post">
+					<form id="mainForm" class="form-inline search-form" action="<%=request.getContextPath()%>/eqinfo_list.do" method="post">
 						<input type="hidden" name="page.pageNo" id="pageNo" value="${page.pageNo}" /> 
+						<label for="param_area">地区</label>
+					    <select id="param_area" name="param[area]">
+							<option value=""></option>
+							<option value="上海">上海</option>
+							<option value="北京">北京</option>
+							<option value="广州">广州</option>
+							<option value="成都">成都</option>
+						</select>
+					    <label for="param_sn">SN</label>
+					    <input id="param_sn" type="text" name="param[sn]" value="${param[sn]}"/> 
+						<button type="submit" class="btn btn-primary">查询</button>
+					</form>
+					<div class="btn-toolbar">
+						<button class="btn">停止</button>
+						<button class="btn">启动</button>
+					</div>
 						<div class="well">
 							<table class="table">
 								<thead>
 									<tr>
+										<th><input id="checkAll" type="checkbox" /> </th>
 										<th>NO</th>
 										<th>SN</th>
-										<th>上传时间</th>
+										<th>地区</th>
 										<th>组别</th>
-										<th>URL</th>
-										<th>描述</th>
-										<th style="width: 26px;"></th>
+										<th>状态</th>
+										<th style="width: 60px;">操作</th>
 									</tr>
 								</thead>
 								<tbody>
 									<s:iterator value="page.dataList" >
 									<tr>
+										<td><input name="checkBoxId"  type="checkbox" value="${id}" /></td>
 										<td>${index+1}</td>
 										<td>${sn}</td>
 										<td>${area}</td>
-										<td>${categoryId}</td>
-										<td><c:if test="${stateId==1}">在线</c:if><c:if test="${stateId==0}">离线</c:if></td>
+										<td>${group}</td>
+										<td><s:if test="state==1">在线</s:if><s:else>离线</s:else></td>
 										<td>
-											<a href="<%=request.getContextPath()%>/eqinfo_load.do?id=${id}"><i class="icon-pencil"></i></a> 
+											<a href="<%=request.getContextPath()%>/eqmedia_list.do?param[eqId]=${id}"><i class="icon-pencil">查看</i></a> 
 										</td>
 									</tr>
 									</s:iterator>
@@ -77,7 +94,6 @@
 								 
 							</ul>
 						</div>
-					</form>
 		
 				</div>
 			</div>
