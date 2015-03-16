@@ -14,13 +14,13 @@
 		<a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>档案管理</a>
 		<ul id="accounts-menu" class="media nav nav-list collapse">
 			<li><a href="media_list.do">档案信息</a></li>
-			<li><a href="eqmedia_list.do">机台档案</a></li>
 		</ul>
 
 		<a href="#legal-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>系统管理</a>
-		<ul id="legal-menu" class="three nav nav-list collapse">
+		<ul id="legal-menu" class="sys nav nav-list collapse">
 			<li><a href="user_list.do">用户管理</a></li>
 			<li><a href="role_list.do">权限管理</a></li>
+			<li><a href="category_list.do">系统管理</a></li>
 		</ul>
 </div>
 
